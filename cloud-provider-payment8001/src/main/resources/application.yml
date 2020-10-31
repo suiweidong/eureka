@@ -1,0 +1,41 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-provider-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.98.113.118:3306/magical_dgg?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: youis218945
+
+eureka:
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true  # 访问路径可以显示ip地址
+    #Eureka客户端向服务端发送心跳的时间间隔，单位为秒(默认是30秒)
+    #lease-renewal-interval-in-seconds: 1
+    #Eureka服务端在收到最后一次心跳后等待时间上限，单位为秒(默认是90秒)，超时将剔除服务
+    #lease-expiration-duration-in-seconds: 2
+  client:
+    # 表示将自己注册到注册中心
+    register-with-eureka: true
+    # 是否从eureka-server中抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true，才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+    # defaultZone: http://localhost:7001/eureka   # 单机版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka     # 集群版
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.eureka.springcloud.entitys
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
