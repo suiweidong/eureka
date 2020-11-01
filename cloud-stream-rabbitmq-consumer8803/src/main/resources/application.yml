@@ -11,21 +11,20 @@ spring:
     password: youis218945
   cloud:
     stream:
-      bindings: # \u670D\u52A1\u7684\u6574\u5408\u5904\u7406
-        input: # \u8FD9\u4E2A\u540D\u5B57\u662F\u4E00\u4E2A\u901A\u9053\u7684\u540D\u79F0
-          destination: studyExchange # \u8868\u793A\u8981\u4F7F\u7528\u7684Exchange\u540D\u79F0\u5B9A\u4E49
-          content-type: application/json # \u8BBE\u7F6E\u6D88\u606F\u7C7B\u578B\uFF0C\u672C\u6B21\u4E3Ajson\uFF0C\u6587\u672C\u5219\u4E3A text/plain
+      bindings: # 服务的整合处理
+        input: # 这个名字是一个通道的名称
+          destination: studyExchange # 表示要使用的Exchange名称定义
+          content-type: application/json # 设置消息类型，本次为json，文本则为 text/plain
 
 eureka:
   instance:
     instance-id: cloud-stream-consumer8803
-    prefer-ip-address: true   # \u8BBF\u95EE\u8DEF\u5F84\u53EF\u4EE5\u663E\u793Aip\u5730\u5740
+    prefer-ip-address: true   # 访问路径可以显示ip地址
   client:
-    # \u8868\u793A\u5C06\u81EA\u5DF1\u6CE8\u518C\u5230\u6CE8\u518C\u4E2D\u5FC3
+    # 表示将自己注册到注册中心
     register-with-eureka: true
-    # \u662F\u5426\u4ECEeureka-server\u4E2D\u6293\u53D6\u5DF2\u6709\u7684\u6CE8\u518C\u4FE1\u606F\uFF0C\u9ED8\u8BA4\u4E3Atrue\u3002\u5355\u8282\u70B9\u65E0\u6240\u8C13\uFF0C\u96C6\u7FA4\u5FC5\u987B\u8BBE\u7F6E\u4E3Atrue\uFF0C\u624D\u80FD\u914D\u5408ribbon\u4F7F\u7528\u8D1F\u8F7D\u5747\u8861
+    # 是否从eureka-server中抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true，才能配合ribbon使用负载均衡
     fetch-registry: true
     service-url:
-      # defaultZone: http://localhost:7001/eureka   # \u5355\u673A\u7248
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka    # \u96C6\u7FA4\u7248
-
+      # defaultZone: http://localhost:7001/eureka   # 单机版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka    # 集群版
