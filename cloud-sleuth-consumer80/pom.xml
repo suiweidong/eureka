@@ -26,6 +26,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!--openfeign 转移到common-api中-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+        <!--        </dependency>-->
+
         <!--spring-cloud-eureka-->
         <!--eureka-client 转移到common-api中-->
         <!--        <dependency>-->

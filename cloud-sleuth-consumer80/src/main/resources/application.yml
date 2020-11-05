@@ -8,18 +8,23 @@ spring:
     base-url: http://localhost:9411
   sleuth:
     sampler:
-      # ²ÉÑùÂÊÖµ½éÓÚ 0 - 1Ö®¼ä£¬1Ôò±íÊ¾È«²¿²É¼¯
+      # é‡‡æ ·ç‡å€¼ä»‹äº 0 - 1ä¹‹é—´ï¼Œ1åˆ™è¡¨ç¤ºå…¨éƒ¨é‡‡é›†
       probability: 1
 
 eureka:
   instance:
     instance-id: cloud-sleuth-consumer80
-    prefer-ip-address: true   # ·ÃÎÊÂ·¾¶¿ÉÒÔÏÔÊ¾ipµØÖ·
+    prefer-ip-address: true   # è®¿é—®è·¯å¾„å¯ä»¥æ˜¾ç¤ºipåœ°å€
   client:
-    # ±íÊ¾½«×Ô¼º×¢²áµ½×¢²áÖĞĞÄ
+    # è¡¨ç¤ºå°†è‡ªå·±æ³¨å†Œåˆ°æ³¨å†Œä¸­å¿ƒ
     register-with-eureka: true
-    # ÊÇ·ñ´Óeureka-serverÖĞ×¥È¡ÒÑÓĞµÄ×¢²áĞÅÏ¢£¬Ä¬ÈÏÎªtrue¡£µ¥½ÚµãÎŞËùÎ½£¬¼¯Èº±ØĞëÉèÖÃÎªtrue£¬²ÅÄÜÅäºÏribbonÊ¹ÓÃ¸ºÔØ¾ùºâ
+    # æ˜¯å¦ä»eureka-serverä¸­æŠ“å–å·²æœ‰çš„æ³¨å†Œä¿¡æ¯ï¼Œé»˜è®¤ä¸ºtrueã€‚å•èŠ‚ç‚¹æ— æ‰€è°“ï¼Œé›†ç¾¤å¿…é¡»è®¾ç½®ä¸ºtrueï¼Œæ‰èƒ½é…åˆribbonä½¿ç”¨è´Ÿè½½å‡è¡¡
     fetch-registry: true
     service-url:
-      # defaultZone: http://localhost:7001/eureka   # µ¥»ú°æ
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka    # ¼¯Èº°æ
+      # defaultZone: http://localhost:7001/eureka   # å•æœºç‰ˆ
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka    # é›†ç¾¤ç‰ˆ
+
+# è¶…æ—¶æ—¶é—´è®¾ç½® é»˜è®¤1s
+ribbon:
+  ReadTimeout: 6000
+  ConnectTimeout: 6000
