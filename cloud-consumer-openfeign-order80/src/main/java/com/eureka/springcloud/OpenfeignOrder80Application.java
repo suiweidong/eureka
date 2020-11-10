@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScans;
 @EnableFeignClients
 @EnableEurekaClient
 //@ComponentScan(value = {"com.eureka.springcloud.cloudservice","com.eureka.springcloud"})
-@ComponentScan({"com.eureka.springcloud.cloudservice","com.eureka.springcloud"})
+//@ComponentScan({"com.eureka.springcloud.cloudservice","com.eureka.springcloud"})
 public class OpenfeignOrder80Application {
 
     public static void main(String[] args) {
