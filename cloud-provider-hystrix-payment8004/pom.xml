@@ -7,7 +7,7 @@
         <artifactId>eureka</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>cloud-provider-hystrix-java-payment8004</artifactId>
+    <artifactId>cloud-provider-hystrix-payment8004</artifactId>
 
     <dependencies>
 
